@@ -1,0 +1,44 @@
+:root {
+  --first: #1f2041ff;
+  --second: #4b3f72ff;
+  --third: #417b5aff;
+  --fourth: #d0cebaff;
+  --fifth: #e9d2c0ff;
+}
+
+body{
+  background-color: var(--fourth);
+}
+
+h2, h3{
+  color: var(--first);
+}
+
+navbar a {
+    color: #888888;
+    text-decoration:none;
+}
+
+.btn {
+    border: 1px solid #888888;
+    background: #888888;
+}
+
+.action-button {
+    margin-top: 1em;
+}
+
+
+.corner-bottom{
+    position:fixed;
+    bottom:2em;
+    left:2em;
+    z-index: 9;
+}
+
+.corner-bottom-fr{
+    position:fixed;
+    bottom:2em;
+    left:15em;
+    z-index: 9;
+}
