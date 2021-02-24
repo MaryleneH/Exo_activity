@@ -48,32 +48,26 @@ mod_data_ui <- function(id){
 mod_data_server <- function(input, output, session,r){
   ns <- session$ns
 
-  # local <- reactiveValues(
-  #   table <- my_sample(dataset = r$dataset, number = 10)
-  # )
   local <- reactiveValues()
+
+  # local <- reactiveValues(
+  #   local$table <- my_sample(dataset = r$dataset, number = 10)
+  # )
 
 
   # Affiche de la table echantillonnée
   observeEvent(input$bouton,{
 
     req(r$dataset)
-
-
     local$table <- my_sample(dataset = r$dataset, number = input$nb_sample)
 
-    output$data_sample <- DT::renderDT({
-      validate(
-        need(r$dataset,
-             message = "Please upload a file"
-        )
-      )
 
-      local$table %>%
-        DT::datatable(options = list(scrollX = TRUE))
+  })
 
-})
 
+
+  observeEvent(r$dataset,{
+    local$table <- my_sample(dataset = r$dataset, number = 10)
   })
 
   output$data_sample <- DT::renderDT({
@@ -82,7 +76,7 @@ mod_data_server <- function(input, output, session,r){
            message = "Please upload a file"
       )
     )
-    local$table <- my_sample(dataset = r$dataset, number = 10)
+
     local$table %>%
       DT::datatable(options = list(scrollX = TRUE))
 
